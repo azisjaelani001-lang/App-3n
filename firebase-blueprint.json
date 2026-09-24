@@ -1,0 +1,109 @@
+{
+  "entities": {
+    "beneficiary": {
+      "title": "Beneficiary",
+      "description": "Data penerima manfaat program gizi (Balita, Bumil, Busui, Kader)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID unik penerima manfaat"
+        },
+        "nik": {
+          "type": "string",
+          "description": "Nomor Induk Kependudukan 16 digit"
+        },
+        "nama": {
+          "type": "string",
+          "description": "Nama lengkap sasaran"
+        },
+        "kategori": {
+          "type": "string",
+          "enum": ["Balita", "Bumil", "Busui", "Kader"],
+          "description": "Kategori sasaran penerima manfaat"
+        },
+        "jenisKelamin": {
+          "type": "string",
+          "enum": ["L", "P"],
+          "description": "Jenis kelamin (L = Laki-laki, P = Perempuan)"
+        },
+        "tanggalLahir": {
+          "type": "string",
+          "description": "Tanggal lahir format YYYY-MM-DD"
+        },
+        "alamat": {
+          "type": "string",
+          "description": "Alamat tempat tinggal / RT / RW"
+        },
+        "namaOrangTua": {
+          "type": "string",
+          "description": "Nama orang tua / wali / suami"
+        },
+        "posyandu": {
+          "type": "string",
+          "description": "Nama Posyandu binaan di Desa Jayamukti"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Waktu pembaruan data terakhir"
+        }
+      },
+      "required": ["id", "nik", "nama", "kategori", "jenisKelamin", "tanggalLahir", "alamat", "posyandu"]
+    },
+    "user": {
+      "title": "User",
+      "description": "Akun login admin SPPG atau kader posyandu",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID unik akun pengguna"
+        },
+        "email": {
+          "type": "string",
+          "description": "Alamat email login pengguna"
+        },
+        "username": {
+          "type": "string",
+          "description": "Username atau email login"
+        },
+        "password": {
+          "type": "string",
+          "description": "Password login akun"
+        },
+        "pin": {
+          "type": "string",
+          "description": "PIN atau alternatif kata sandi"
+        },
+        "nama": {
+          "type": "string",
+          "description": "Nama lengkap petugas atau kader"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["admin", "kader"],
+          "description": "Peran pengguna"
+        },
+        "posyanduDefault": {
+          "type": "string",
+          "description": "Posyandu yang dikelola kader"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Waktu pembaruan akun terakhir"
+        }
+      },
+      "required": ["id", "email", "password", "nama", "role"]
+    }
+  },
+  "firestore": {
+    "/beneficiaries/{beneficiaryId}": {
+      "schema": "beneficiary",
+      "description": "Koleksi data penerima manfaat terintegrasi antar komputer dan HP kader"
+    },
+    "/users/{userId}": {
+      "schema": "user",
+      "description": "Koleksi data akun admin dan kader posyandu"
+    }
+  }
+}

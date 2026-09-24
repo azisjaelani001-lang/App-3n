@@ -1,0 +1,6 @@
+{
+  "name": "Aplikasi PM 3B Jayamukti",
+  "description": "Aplikasi PM 3B Jayamukti untuk pendataan penerima manfaat Balita, Bumil, Busui, dan Kader Posyandu Badan Gizi Nasional (BGN).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
